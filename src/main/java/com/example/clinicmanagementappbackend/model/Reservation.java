@@ -23,6 +23,7 @@ public class Reservation {
 
     @ManyToOne
     private Doctor doctor;
+
     @ManyToOne
     private Patient patient;
 }
