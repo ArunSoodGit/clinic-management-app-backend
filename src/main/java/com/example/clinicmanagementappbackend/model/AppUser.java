@@ -1,5 +1,7 @@
 package com.example.clinicmanagementappbackend.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +10,8 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 
+@Getter
+@Setter
 @Entity
 public class AppUser implements UserDetails {
 
@@ -40,29 +44,6 @@ public class AppUser implements UserDetails {
     public AppUser() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
