@@ -3,6 +3,7 @@ package com.example.clinicmanagementappbackend.controller;
 import com.example.clinicmanagementappbackend.model.User;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/api")
 public class BasicAuthController {
     @GetMapping({"/validateLogin"})
     public User basicAuth(HttpServletResponse httpServletResponse) {

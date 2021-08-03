@@ -44,14 +44,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().
-                authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated()
-                .and().httpBasic()
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers( "/**").permitAll()
+                .anyRequest()
+                .authenticated()
                 .and()
-                .logout()
-                .logoutUrl("/logout")
-                .invalidateHttpSession(true)
-                .deleteCookies("sessionCookie");
+                .formLogin();
     }
+
 
 }
