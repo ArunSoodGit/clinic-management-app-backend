@@ -1,5 +1,6 @@
 package com.example.clinicmanagementappbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +31,8 @@ public class Doctor {
     @ManyToOne
     private Specialization specialization;
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "doctor")
+    @JsonIgnore
     Set<Reservation> reservation;
 
 }

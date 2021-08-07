@@ -13,31 +13,31 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
 @RequestMapping("/api")
-public class DoctorController {
+public class PrescriptionController {
 
     private final DoctorService doctorService;
 
-    @GetMapping("/doctors")
+    @GetMapping("/prescriptions")
     public List<Doctor> getDoctors() {
         return doctorService.getAll();
     }
 
-    @GetMapping("/doctors/{doctorId}")
+    @GetMapping("/prescriptions/{doctorId}")
     public Doctor getDoctorById(@PathVariable Long doctorId) {
         return doctorService.findById(doctorId).orElseThrow(() -> new IllegalArgumentException("Unsupported value: " + doctorId));
     }
 
-    @PostMapping("/doctors")
+    @PostMapping("/prescriptions")
     public void addDoctor(@RequestBody Doctor doctor) {
         doctorService.addDoctor(doctor);
     }
 
-    @PutMapping("/doctors")
+    @PutMapping("/prescriptions")
     public void updateDoctor(@RequestBody Doctor doctor) {
         doctorService.updateDoctor(doctor);
     }
 
-    @DeleteMapping("/doctors/{doctorId}")
+    @DeleteMapping("/prescriptions/{doctorId}")
     public void removeDoctor(@PathVariable Long doctorId) {
         doctorService.removeDoctor(doctorId);
     }

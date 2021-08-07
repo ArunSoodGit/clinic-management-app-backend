@@ -17,33 +17,33 @@ public class ReservationController {
 
     private final ReservationService reservationService;
 
-    @GetMapping("/reservation")
+    @GetMapping("/reservations")
     public List<Reservation> getReservations() {
         return reservationService.getAllReservations();
     }
 
-    @GetMapping("/reservation/{reservationId}")
+    @GetMapping("/reservations/{reservationId}")
     public Reservation getReservationById(@PathVariable Long reservationId) {
         return reservationService.findReservationById(reservationId).orElseThrow(RuntimeException::new);
     }
 
-    @PostMapping("/reservation")
+    @PostMapping("/reservations")
     public void addReservation(@RequestBody Reservation Reservation) {
         reservationService.addReservation(Reservation);
     }
 
-    @PutMapping("/reservation")
+    @PutMapping("/reservations")
     public void updateReservation(@RequestBody Reservation Reservation) {
         reservationService.updateReservation(Reservation);
     }
 
-    @DeleteMapping("/reservation/{reservationId}")
+    @DeleteMapping("/reservations/{reservationId}")
     public void removeReservation(@PathVariable Long reservationId) {
         reservationService.removeReservation(reservationId);
     }
 
-    @PostMapping("/doctors/reservation")
+    @PostMapping("/doctors/reservations")
     public List<Reservation> getAllReservationsForDoctor(@RequestBody Doctor doctor) {
-        return reservationService.findAllByCustomer(doctor);
+        return reservationService.findAllByDoctor(doctor);
     }
 }

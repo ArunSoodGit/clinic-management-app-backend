@@ -16,7 +16,7 @@ public class Prescription {
     private Long id;
 
     @ManyToOne
-    private Visit visit;
+    private Reservation reservation;
 
     @OneToMany(mappedBy = "medicine")
     Set<PrescriptionMedicine> prescriptionMedicineSet;

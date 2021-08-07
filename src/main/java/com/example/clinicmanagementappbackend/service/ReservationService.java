@@ -41,7 +41,8 @@ public class ReservationService {
         }
     }
 
-    public List<Reservation> findAllByCustomer(Doctor doctor) {
-       return reservationRepo.findAllByDoctor(doctor);
+    public List<Reservation> findAllByDoctor(Doctor doctor) {
+        return reservationRepo.findAllByDoctor(doctor);
     }
+
 }

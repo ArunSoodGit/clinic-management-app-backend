@@ -1,5 +1,6 @@
 package com.example.clinicmanagementappbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,7 +27,8 @@ public class Patient {
     @Column(name = "pesel")
     private String pesel;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "patient")
+    @JsonIgnore
     Set<Reservation> reservation;
 
 }
