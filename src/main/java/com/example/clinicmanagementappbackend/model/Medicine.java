@@ -1,9 +1,11 @@
 package com.example.clinicmanagementappbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,6 +29,6 @@ public class Medicine {
 
 
     @OneToMany(mappedBy = "prescription")
-    Set<PrescriptionMedicine> prescriptionMedicineSet;
+    List<PrescriptionMedicine> prescriptionMedicine;
 
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -26,6 +27,6 @@ public class Prescription {
     private Reservation reservation;
 
     @OneToMany(mappedBy = "medicine")
-    Set<PrescriptionMedicine> prescriptionMedicineSet;
+    List<PrescriptionMedicine> prescriptionMedicine;
 
 }
