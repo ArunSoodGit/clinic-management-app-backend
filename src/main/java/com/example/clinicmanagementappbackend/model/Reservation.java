@@ -1,11 +1,7 @@
 package com.example.clinicmanagementappbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,7 +22,6 @@ public class Reservation {
     @Column(name = "Date")
     private Date visitDate;
 
-
     @ManyToOne
     private Doctor doctor;
 
@@ -36,7 +31,6 @@ public class Reservation {
     @Column(name = "Description")
     private String description;
 
-
-    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
-    Set<Prescription> prescription;
+    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL)
+    Prescription prescription;
 }

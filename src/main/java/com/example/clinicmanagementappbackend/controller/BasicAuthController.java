@@ -1,5 +1,4 @@
 package com.example.clinicmanagementappbackend.controller;
-
 import com.example.clinicmanagementappbackend.model.User;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,5 +19,4 @@ public class BasicAuthController {
         httpServletResponse.addCookie(cookie);
         return new User("User successfully authenticated");
     }
-
 }

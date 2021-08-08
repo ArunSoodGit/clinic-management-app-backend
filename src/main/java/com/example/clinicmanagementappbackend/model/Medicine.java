@@ -15,6 +15,17 @@ public class Medicine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
+    private String producer;
+
+    private String dose;
+
+    private String packet;
+
+    private String price;
+
+
     @OneToMany(mappedBy = "prescription")
     Set<PrescriptionMedicine> prescriptionMedicineSet;
 

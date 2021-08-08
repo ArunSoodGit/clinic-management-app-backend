@@ -18,29 +18,30 @@ public class PrescriptionService {
 
     private final PrescriptionRepo prescriptionRepo;
 
-
-    public List<Prescription> getAllReservations() {
+    public List<Prescription> getAllPrescriptions() {
         return prescriptionRepo.findAll();
     }
 
-    public Optional<Prescription> findReservationById(Long reservationId) {
-        return prescriptionRepo.findById(reservationId);
+    public Optional<Prescription> findPrescriptionById(Long prescriptionId) {
+        return prescriptionRepo.findById(prescriptionId);
     }
 
-    public void addReservation(Prescription reservation) {
-        prescriptionRepo.save(reservation);
+    public void addPrescription(Prescription prescription) {
+        prescriptionRepo.save(prescription);
     }
 
-    public void updateReservation(Prescription reservation) {
-        if (prescriptionRepo.existsById(reservation.getId())) {
-            prescriptionRepo.save(reservation);
+    public void updatePrescription(Prescription prescription) {
+        if (prescriptionRepo.existsById(prescription.getId())) {
+            prescriptionRepo.save(prescription);
+        }
+    }
+    public void removePrescription(Long prescriptionId) {
+        if (prescriptionRepo.existsById(prescriptionId)) {
+            prescriptionRepo.deleteById(prescriptionId);
         }
     }
 
-    public void removeReservation(Long reservationId) {
-        if (prescriptionRepo.existsById(reservationId)) {
-            prescriptionRepo.deleteById(reservationId);
-        }
+    public Prescription getPrescriptionForReservation(Reservation reservation) {
+      return  prescriptionRepo.getPrescriptionByReservation(reservation).orElseThrow(RuntimeException::new);
     }
-
 }

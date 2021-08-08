@@ -1,10 +1,9 @@
 package com.example.clinicmanagementappbackend.controller;
-
-import com.example.clinicmanagementappbackend.model.Doctor;
-import com.example.clinicmanagementappbackend.service.DoctorService;
+import com.example.clinicmanagementappbackend.model.Prescription;
+import com.example.clinicmanagementappbackend.model.Reservation;
+import com.example.clinicmanagementappbackend.service.PrescriptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.support.ExceptionMessage;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,30 +14,35 @@ import java.util.List;
 @RequestMapping("/api")
 public class PrescriptionController {
 
-    private final DoctorService doctorService;
+    private final PrescriptionService prescriptionService;
 
     @GetMapping("/prescriptions")
-    public List<Doctor> getDoctors() {
-        return doctorService.getAll();
+    public List<Prescription> getPrescriptions() {
+        return prescriptionService.getAllPrescriptions();
     }
 
-    @GetMapping("/prescriptions/{doctorId}")
-    public Doctor getDoctorById(@PathVariable Long doctorId) {
-        return doctorService.findById(doctorId).orElseThrow(() -> new IllegalArgumentException("Unsupported value: " + doctorId));
+    @GetMapping("/prescriptions/{prescriptionId}")
+    public Prescription getPrescriptionById(@PathVariable Long prescriptionId) {
+        return prescriptionService.findPrescriptionById(prescriptionId).orElseThrow(() -> new IllegalArgumentException("Unsupported value: " + prescriptionId));
     }
 
     @PostMapping("/prescriptions")
-    public void addDoctor(@RequestBody Doctor doctor) {
-        doctorService.addDoctor(doctor);
+    public void addPrescription(@RequestBody Prescription prescription) {
+        prescriptionService.addPrescription(prescription);
     }
 
     @PutMapping("/prescriptions")
-    public void updateDoctor(@RequestBody Doctor doctor) {
-        doctorService.updateDoctor(doctor);
+    public void updatePrescription(@RequestBody Prescription prescription) {
+        prescriptionService.updatePrescription(prescription);
     }
 
-    @DeleteMapping("/prescriptions/{doctorId}")
-    public void removeDoctor(@PathVariable Long doctorId) {
-        doctorService.removeDoctor(doctorId);
+    @DeleteMapping("/prescriptions/{prescriptionId}")
+    public void removePrescription(@PathVariable Long prescriptionId) {
+        prescriptionService.removePrescription(prescriptionId);
+    }
+
+    @PostMapping("/reservations/prescriptions")
+    public Prescription getPrescriptionForReservation(@RequestBody Reservation reservation) {
+       return prescriptionService.getPrescriptionForReservation(reservation);
     }
 }
