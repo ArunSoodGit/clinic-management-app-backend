@@ -1,5 +1,6 @@
 package com.example.clinicmanagementappbackend.controller;
 import com.example.clinicmanagementappbackend.model.Doctor;
+import com.example.clinicmanagementappbackend.model.Patient;
 import com.example.clinicmanagementappbackend.model.Reservation;
 import com.example.clinicmanagementappbackend.service.ReservationService;
 import lombok.RequiredArgsConstructor;
@@ -43,5 +44,10 @@ public class ReservationController {
     @PostMapping("/doctors/reservations")
     public List<Reservation> getAllReservationsForDoctor(@RequestBody Doctor doctor) {
         return reservationService.findAllByDoctor(doctor);
+    }
+
+    @PostMapping("/patients/reservations")
+    public List<Reservation> getAllReservationsForPatient(@RequestBody Patient patient) {
+        return reservationService.findAllByPatient(patient);
     }
 }

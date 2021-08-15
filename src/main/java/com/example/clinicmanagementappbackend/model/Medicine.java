@@ -25,10 +25,11 @@ public class Medicine {
 
     private String packet;
 
-    private String price;
+    private Double price;
 
 
-    @OneToMany(mappedBy = "prescription")
-    List<PrescriptionMedicine> prescriptionMedicine;
+    @ManyToMany(mappedBy = "medicines")
+    @JsonIgnore
+    private Set<Prescription> prescriptions;
 
 }

@@ -1,8 +1,6 @@
 package com.example.clinicmanagementappbackend.service;
 
-import com.example.clinicmanagementappbackend.model.Doctor;
 import com.example.clinicmanagementappbackend.model.Medicine;
-import com.example.clinicmanagementappbackend.model.PrescriptionMedicine;
 import com.example.clinicmanagementappbackend.repository.MedicineRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +40,7 @@ public class MedicineService {
         }
     }
 
-    public List<Medicine> findMedicinesByPrescription(PrescriptionMedicine prescriptionMedicine) {
-        return medicineRepo.findMedicinesByPrescriptionMedicine(prescriptionMedicine);
-    }
+//    public List<Medicine> findMedicinesByPrescription(PrescriptionMedicine prescriptionMedicine) {
+//        return medicineRepo.findMedicinesByPrescriptionMedicine(prescriptionMedicine);
+//    }
 }

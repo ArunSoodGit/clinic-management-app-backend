@@ -26,7 +26,11 @@ public class Prescription {
     @JsonIgnore
     private Reservation reservation;
 
-    @OneToMany(mappedBy = "medicine")
-    List<PrescriptionMedicine> prescriptionMedicine;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "prescription_id")},
+            inverseJoinColumns = {@JoinColumn(name = "medicine_id")}
+    )
+    private Set<Medicine> medicines;
 
 }

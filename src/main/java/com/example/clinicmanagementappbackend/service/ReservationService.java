@@ -1,6 +1,7 @@
 package com.example.clinicmanagementappbackend.service;
 
 import com.example.clinicmanagementappbackend.model.Doctor;
+import com.example.clinicmanagementappbackend.model.Patient;
 import com.example.clinicmanagementappbackend.model.Reservation;
 import com.example.clinicmanagementappbackend.repository.ReservationRepo;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +44,9 @@ public class ReservationService {
 
     public List<Reservation> findAllByDoctor(Doctor doctor) {
         return reservationRepo.findAllByDoctor(doctor);
+    }
+    public List<Reservation> findAllByPatient(Patient patient) {
+        return reservationRepo.findAllByPatient(patient);
     }
 
 }

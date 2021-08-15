@@ -1,7 +1,5 @@
 package com.example.clinicmanagementappbackend.controller;
-import com.example.clinicmanagementappbackend.model.Doctor;
 import com.example.clinicmanagementappbackend.model.Medicine;
-import com.example.clinicmanagementappbackend.model.PrescriptionMedicine;
 import com.example.clinicmanagementappbackend.service.MedicineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +40,9 @@ public class MedicineController {
         medicineService.removeMedicine(medicineId);
     }
 
-    @PostMapping("/prescriptions/medicines")
-    public List<Medicine> findMedicinesByPrescription(@RequestBody PrescriptionMedicine prescriptionMedicine) {
-        return medicineService.findMedicinesByPrescription(prescriptionMedicine);
-    }
+//    @PostMapping("/prescriptions/medicines")
+//    public List<Medicine> findMedicinesByPrescription(@RequestBody PrescriptionMedicine prescriptionMedicine) {
+//        return medicineService.findMedicinesByPrescription(prescriptionMedicine);
+//    }
 
 }
