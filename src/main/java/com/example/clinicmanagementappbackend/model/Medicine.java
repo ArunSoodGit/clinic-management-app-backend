@@ -21,9 +21,9 @@ public class Medicine {
 
     private String producer;
 
-    private String dose;
+    private Long dose;
 
-    private String packet;
+    private Long packet;
 
     private Double price;
 

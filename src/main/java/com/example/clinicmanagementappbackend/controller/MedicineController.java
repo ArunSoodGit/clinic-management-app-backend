@@ -26,13 +26,13 @@ public class MedicineController {
     }
 
     @PostMapping("/medicines")
-    public void addMedicine(@RequestBody Medicine doctor) {
-        medicineService.addMedicine(doctor);
+    public void addMedicine(@RequestBody Medicine medicine) {
+        medicineService.addMedicine(medicine);
     }
 
     @PutMapping("/medicines")
-    public void updateMedicine(@RequestBody Medicine doctor) {
-        medicineService.updateMedicine(doctor);
+    public void updateMedicine(@RequestBody Medicine medicine) {
+        medicineService.updateMedicine(medicine);
     }
 
     @DeleteMapping("/medicines/{medicineId}")
