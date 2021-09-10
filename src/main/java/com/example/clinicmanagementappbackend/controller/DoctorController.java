@@ -1,5 +1,6 @@
 package com.example.clinicmanagementappbackend.controller;
 import com.example.clinicmanagementappbackend.model.Doctor;
+import com.example.clinicmanagementappbackend.model.Room;
 import com.example.clinicmanagementappbackend.service.DoctorService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

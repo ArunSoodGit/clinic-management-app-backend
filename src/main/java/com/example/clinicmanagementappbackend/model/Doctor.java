@@ -27,10 +27,10 @@ public class Doctor {
     @Column(name = "phone")
     private String phone;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Room room;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Specialization specialization;
 
     @OneToMany(mappedBy = "doctor")
