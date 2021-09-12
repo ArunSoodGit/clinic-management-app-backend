@@ -11,7 +11,6 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@ToString
 @Table(name = "doctor")
 public class Doctor {
     @Id
@@ -27,7 +26,7 @@ public class Doctor {
     @Column(name = "phone")
     private String phone;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Room room;
 
     @ManyToOne(cascade = CascadeType.PERSIST)

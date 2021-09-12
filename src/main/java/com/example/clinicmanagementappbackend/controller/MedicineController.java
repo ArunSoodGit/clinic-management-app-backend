@@ -40,9 +40,4 @@ public class MedicineController {
         medicineService.removeMedicine(medicineId);
     }
 
-//    @PostMapping("/prescriptions/medicines")
-//    public List<Medicine> findMedicinesByPrescription(@RequestBody PrescriptionMedicine prescriptionMedicine) {
-//        return medicineService.findMedicinesByPrescription(prescriptionMedicine);
-//    }
-
 }

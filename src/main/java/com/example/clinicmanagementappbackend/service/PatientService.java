@@ -1,6 +1,5 @@
 package com.example.clinicmanagementappbackend.service;
 
-import com.example.clinicmanagementappbackend.model.Doctor;
 import com.example.clinicmanagementappbackend.model.Patient;
 import com.example.clinicmanagementappbackend.repository.PatientRepo;
 import lombok.RequiredArgsConstructor;
@@ -23,4 +22,13 @@ public class PatientService {
         return patientRepo.findById(patientId);
     }
 
+    public void addPatient(Patient patient) {
+        patientRepo.save(patient);
+    }
+
+    public void removePatient(Long patientId) {
+        if (patientRepo.existsById(patientId)) {
+            patientRepo.deleteById(patientId);
+        }
+    }
 }

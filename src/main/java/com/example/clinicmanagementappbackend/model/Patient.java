@@ -27,7 +27,7 @@ public class Patient {
     @Column(name = "pesel")
     private String pesel;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     @JsonIgnore
     Set<Reservation> reservation;
 
