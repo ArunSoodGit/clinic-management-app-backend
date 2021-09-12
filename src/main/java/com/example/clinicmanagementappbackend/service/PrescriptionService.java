@@ -42,6 +42,6 @@ public class PrescriptionService {
     }
 
     public Prescription getPrescriptionForReservation(Reservation reservation) {
-      return  prescriptionRepo.getPrescriptionByReservation(reservation).orElseThrow(RuntimeException::new);
+      return  prescriptionRepo.getPrescriptionByReservation(reservation).orElse(new Prescription());
     }
 }

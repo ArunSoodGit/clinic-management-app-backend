@@ -1,11 +1,14 @@
 package com.example.clinicmanagementappbackend.controller;
+
 import com.example.clinicmanagementappbackend.model.Doctor;
 import com.example.clinicmanagementappbackend.model.Patient;
+import com.example.clinicmanagementappbackend.model.Prescription;
 import com.example.clinicmanagementappbackend.model.Reservation;
 import com.example.clinicmanagementappbackend.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -27,13 +30,16 @@ public class ReservationController {
     }
 
     @PostMapping("/reservations")
-    public void addReservation(@RequestBody Reservation Reservation) {
-        reservationService.addReservation(Reservation);
+    public void addReservation(@RequestBody Reservation reservation) {
+        if (reservation.getPrescription() != null){
+           reservation.getPrescription().setReservation(reservation);
+        }
+            reservationService.addReservation(reservation);
     }
 
     @PutMapping("/reservations")
-    public void updateReservation(@RequestBody Reservation Reservation) {
-        reservationService.updateReservation(Reservation);
+    public void updateReservation(@RequestBody Reservation reservation) {
+        reservationService.updateReservation(reservation);
     }
 
     @DeleteMapping("/reservations/{reservationId}")
