@@ -2,6 +2,7 @@ package com.example.clinicmanagementappbackend.config;
 
 import com.example.clinicmanagementappbackend.repository.AppUserRepo;
 import com.example.clinicmanagementappbackend.service.UserDetailsServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -24,13 +26,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     private final UserDetailsServiceImpl userDetailsService;
-
-    @Autowired
-    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, AppUserRepo appUserRepo) {
-        this.appUserRepo = appUserRepo;
-        this.userDetailsService = userDetailsService;
-    }
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
