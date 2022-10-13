@@ -2,7 +2,6 @@ package com.example.clinicmanagementappbackend.controller;
 
 import com.example.clinicmanagementappbackend.model.Reservation;
 import com.example.clinicmanagementappbackend.service.ReservationService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api/v1/roles")
 public class RoleController {
 
     private final ReservationService reservationService;
 
-    @GetMapping("/roles")
+    @Autowired
+    public RoleController(ReservationService reservationService) {
+        this.reservationService = reservationService;
+    }
+
+    @GetMapping()
     public List<Reservation> getReservations() {
         return reservationService.getAllReservations();
     }

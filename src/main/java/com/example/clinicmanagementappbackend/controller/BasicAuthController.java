@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api/v1/validate-login")
 public class BasicAuthController {
-    @GetMapping({"/validateLogin"})
+    @GetMapping()
     public AppUser basicAuth(HttpServletResponse httpServletResponse) {
         Cookie cookie = new Cookie("sessionCookie", "session_cookie");
         cookie.setMaxAge(500);

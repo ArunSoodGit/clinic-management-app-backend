@@ -27,7 +27,6 @@ public class Medicine {
 
     private Double price;
 
-
     @ManyToMany(mappedBy = "medicines")
     @JsonIgnore
     private Set<Prescription> prescriptions;

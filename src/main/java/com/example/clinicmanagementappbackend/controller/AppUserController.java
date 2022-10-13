@@ -16,12 +16,17 @@ import java.util.Map;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@RequestMapping("/api")
+@RequestMapping("api/v1/users")
 public class AppUserController {
+
     private final AppUserService appUserService;
 
-    @GetMapping("/users/{userName}")
+    @Autowired
+    public AppUserController(AppUserService appUserService) {
+        this.appUserService = appUserService;
+    }
+
+    @GetMapping("/{userName}")
     public AppUser getUserByUserName(@PathVariable String userName) {
         return appUserService.getUserByUserName(userName).orElseThrow(() -> new IllegalArgumentException("Unsupported value: " + userName));
     }

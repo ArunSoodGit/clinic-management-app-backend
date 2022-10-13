@@ -1,48 +1,52 @@
 package com.example.clinicmanagementappbackend.controller;
+
 import com.example.clinicmanagementappbackend.model.Prescription;
 import com.example.clinicmanagementappbackend.model.Reservation;
 import com.example.clinicmanagementappbackend.service.PrescriptionService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin(origins = "*")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api/v1/prescriptions")
 public class PrescriptionController {
 
     private final PrescriptionService prescriptionService;
 
-    @GetMapping("/prescriptions")
+    @Autowired
+    public PrescriptionController(PrescriptionService prescriptionService) {
+        this.prescriptionService = prescriptionService;
+    }
+
+    @GetMapping()
     public List<Prescription> getPrescriptions() {
         return prescriptionService.getAllPrescriptions();
     }
 
-    @GetMapping("/prescriptions/{prescriptionId}")
+    @GetMapping("/{prescriptionId}")
     public Prescription getPrescriptionById(@PathVariable Long prescriptionId) {
         return prescriptionService.findPrescriptionById(prescriptionId).orElseThrow(() -> new IllegalArgumentException("Unsupported value: " + prescriptionId));
     }
 
-    @PostMapping("/prescriptions")
+    @PostMapping("")
     public void addPrescription(@RequestBody Prescription prescription) {
         prescriptionService.addPrescription(prescription);
     }
 
-    @PutMapping("/prescriptions")
+    @PutMapping("")
     public void updatePrescription(@RequestBody Prescription prescription) {
         prescriptionService.updatePrescription(prescription);
     }
 
-    @DeleteMapping("/prescriptions/{prescriptionId}")
+    @DeleteMapping("/{prescriptionId}")
     public void removePrescription(@PathVariable Long prescriptionId) {
         prescriptionService.removePrescription(prescriptionId);
     }
 
-    @PostMapping("/reservations/prescriptions")
+    @PostMapping("/reservations")
     public Prescription getPrescriptionForReservation(@RequestBody Reservation reservation) {
-       return prescriptionService.getPrescriptionForReservation(reservation);
+        return prescriptionService.getPrescriptionForReservation(reservation);
     }
 }

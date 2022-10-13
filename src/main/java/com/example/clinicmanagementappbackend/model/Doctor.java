@@ -32,10 +32,7 @@ public class Doctor {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Specialization specialization;
 
-
-
     @OneToMany(mappedBy = "doctor")
     @JsonIgnore
     Set<Reservation> reservation;
-
 }

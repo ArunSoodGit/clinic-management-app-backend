@@ -27,11 +27,9 @@ public class AppUser{
     private boolean enabled;
 
 
-
     public AppUser(String status) {
         this.status = status;
     }
-
 
     public AppUser() {
     }
