@@ -1,20 +1,21 @@
 package com.example.clinicmanagementappbackend.controller;
+
 import com.example.clinicmanagementappbackend.model.Doctor;
 import com.example.clinicmanagementappbackend.model.Room;
 import com.example.clinicmanagementappbackend.model.Specialization;
 import com.example.clinicmanagementappbackend.service.DoctorService;
 import com.example.clinicmanagementappbackend.service.RoomService;
 import com.example.clinicmanagementappbackend.service.SpecializationService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/v1/doctors")
+@RequestMapping("/api/v1/doctors")
 public class DoctorController {
 
     private final DoctorService doctorService;
@@ -31,9 +32,8 @@ public class DoctorController {
     }
 
     @GetMapping()
-    public String getDoctors() throws JsonProcessingException {
-        List<Doctor> doctorList = doctorService.getAll();
-        return objectMapper.writeValueAsString(doctorList);
+    public List<Doctor> getDoctors() {
+        return doctorService.getAll();
     }
 
     @GetMapping("/{doctorId}")

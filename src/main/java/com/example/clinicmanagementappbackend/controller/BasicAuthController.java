@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/v1/validate-login")
+@RequestMapping("/api/v1/validate-login")
 public class BasicAuthController {
     @GetMapping()
     public AppUser basicAuth(HttpServletResponse httpServletResponse) {

@@ -11,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/v1/patients")
+@RequestMapping("/api/v1/patients")
 public class PatientController {
 
     private final PatientService patientService;
@@ -24,9 +24,8 @@ public class PatientController {
     }
 
     @GetMapping()
-    public String getPatients() throws JsonProcessingException {
-        List<Patient> doctorList = patientService.getAll();
-        return objectMapper.writeValueAsString(doctorList);
+    public List<Patient> getPatients() throws JsonProcessingException {
+        return patientService.getAll();
     }
 
     @GetMapping("/{patientsId}")
