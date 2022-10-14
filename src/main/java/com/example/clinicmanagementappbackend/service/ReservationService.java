@@ -42,11 +42,11 @@ public class ReservationService {
         }
     }
 
-    public List<Reservation> findAllByDoctor(Doctor doctor) {
-        return reservationRepo.findAllByDoctorId(doctor.getId());
+    public List<Reservation> findAllByDoctor(Long doctorId) {
+        return reservationRepo.findAllByDoctorId(doctorId);
     }
-    public List<Reservation> findAllByPatient(Patient patient) {
-        return reservationRepo.findAllByPatientId(patient.getId());
+    public List<Reservation> findAllByPatient(Long patientId) {
+        return reservationRepo.findAllByPatientId(patientId);
     }
 
 }

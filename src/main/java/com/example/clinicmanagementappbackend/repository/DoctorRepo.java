@@ -15,6 +15,6 @@ public interface DoctorRepo extends JpaRepository<Doctor, Long> {
     List<Doctor> findAll();
 
     @Override
-    @Query("select DISTINCT  doctor from Doctor doctor left join fetch doctor.reservations join fetch doctor.specialization where doctor.id = :doctorId")
+    @Query("select DISTINCT  doctor from Doctor doctor left join fetch doctor.reservations left join fetch doctor.specialization  left join fetch doctor.room where doctor.id = :doctorId")
     Optional<Doctor> findById(Long doctorId);
 }

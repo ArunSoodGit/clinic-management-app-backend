@@ -49,13 +49,13 @@ public class ReservationController {
         reservationService.removeReservation(reservationId);
     }
 
-    @PostMapping("/doctors")
-    public List<Reservation> getAllReservationsForDoctor(@RequestBody Doctor doctor) {
-        return reservationService.findAllByDoctor(doctor);
+    @PostMapping("/doctors/{doctor-id}")
+    public List<Reservation> getAllReservationsForDoctor( @PathVariable("doctor-id") Long doctorId) {
+        return reservationService.findAllByDoctor(doctorId);
     }
 
-    @PostMapping("/patients")
-    public List<Reservation> getAllReservationsForPatient(@RequestBody Patient patient) {
-        return reservationService.findAllByPatient(patient);
+    @PostMapping("/patients/{patient-id}")
+    public List<Reservation> getAllReservationsForPatient( @PathVariable("patient-id") Long patientId) {
+        return reservationService.findAllByPatient(patientId);
     }
 }

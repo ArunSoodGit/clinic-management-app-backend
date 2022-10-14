@@ -6,7 +6,6 @@ import com.example.clinicmanagementappbackend.model.Specialization;
 import com.example.clinicmanagementappbackend.service.DoctorService;
 import com.example.clinicmanagementappbackend.service.RoomService;
 import com.example.clinicmanagementappbackend.service.SpecializationService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,11 +42,11 @@ public class DoctorController {
 
     @PostMapping()
     public ResponseEntity<Doctor> addDoctor(@RequestBody Doctor doctor) {
-//        Optional<Room> room = roomService.findByNumber(doctor.getRoom().getNumber());
-//        Optional<Specialization> specialization = specializationService.findByName(doctor.getSpecialization().getName());
-//        room.ifPresent(doctor::setRoom);
-//        specialization.ifPresent(doctor::setSpecialization);
-//        doctorService.addDoctor(doctor);
+        Optional<Room> room = roomService.findByNumber(doctor.getRoom().getNumber());
+        Optional<Specialization> specialization = specializationService.findByName(doctor.getSpecialization().getName());
+        room.ifPresent(doctor::setRoom);
+        specialization.ifPresent(doctor::setSpecialization);
+        doctorService.addDoctor(doctor);
         return new ResponseEntity<>(doctor, HttpStatus.CREATED);
     }
 
