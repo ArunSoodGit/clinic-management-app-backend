@@ -1,12 +1,10 @@
 package com.example.clinicmanagementappbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,12 +25,14 @@ public class Doctor {
     private String phone;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "room_id")
     private Room room;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "specialization_id")
     private Specialization specialization;
 
-    @OneToMany(mappedBy = "doctor")
-    @JsonIgnore
-    Set<Reservation> reservation;
+    @OneToMany
+    @JoinColumn(name = "doctor_id")
+    private List<Reservation> reservations;
 }

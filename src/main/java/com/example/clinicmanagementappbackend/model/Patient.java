@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -27,7 +28,7 @@ public class Patient {
     @Column(name = "pesel")
     private String pesel;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    @JsonIgnore
-    Set<Reservation> reservation;
+    @OneToMany
+    @JoinColumn(name = "patient_id")
+    List<Reservation> reservation;
 }

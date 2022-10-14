@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface ReservationRepo extends JpaRepository<Reservation, Long> {
-    List<Reservation> findAllByDoctor(Doctor doctor);
-    List<Reservation> findAllByPatient(Patient patient);
-
+    List<Reservation> findAllByDoctorId(Long id);
+    List<Reservation> findAllByPatientId(Long id);
 }

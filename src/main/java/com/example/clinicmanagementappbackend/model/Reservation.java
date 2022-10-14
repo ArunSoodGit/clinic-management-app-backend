@@ -22,15 +22,17 @@ public class Reservation {
     @Column(name = "Date")
     private Date visitDate;
 
-    @ManyToOne
-    private Doctor doctor;
+    @Column(name = "doctor_id")
+    private Long doctorId;
 
-    @ManyToOne
-    private Patient patient;
+    @Column(name = "patient_id")
+
+    private Long patientId;
 
     @Column(name = "Description")
     private String description;
 
-    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "reservation_id")
     Prescription prescription;
 }

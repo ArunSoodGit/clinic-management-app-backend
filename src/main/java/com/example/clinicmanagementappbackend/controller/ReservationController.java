@@ -34,7 +34,7 @@ public class ReservationController {
     @PostMapping()
     public void addReservation(@RequestBody Reservation reservation) {
         if (reservation.getPrescription() != null) {
-            reservation.getPrescription().setReservation(reservation);
+            reservation.getPrescription().setReservationId(reservation.getId());
         }
         reservationService.addReservation(reservation);
     }

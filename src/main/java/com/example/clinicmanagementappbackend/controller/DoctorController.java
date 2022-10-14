@@ -8,6 +8,8 @@ import com.example.clinicmanagementappbackend.service.RoomService;
 import com.example.clinicmanagementappbackend.service.SpecializationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,42 +23,43 @@ public class DoctorController {
     private final DoctorService doctorService;
     private final RoomService roomService;
     private final SpecializationService specializationService;
-    private final ObjectMapper objectMapper;
 
     @Autowired
-    public DoctorController(DoctorService doctorService, RoomService roomService, SpecializationService specializationService, ObjectMapper objectMapper) {
+    public DoctorController(DoctorService doctorService, RoomService roomService, SpecializationService specializationService) {
         this.doctorService = doctorService;
         this.roomService = roomService;
         this.specializationService = specializationService;
-        this.objectMapper = objectMapper;
     }
 
     @GetMapping()
-    public List<Doctor> getDoctors() {
-        return doctorService.getAll();
+    public ResponseEntity<List<Doctor>> getDoctors() {
+        return new ResponseEntity<>(doctorService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{doctorId}")
-    public Doctor getDoctorById(@PathVariable Long doctorId) {
-        return doctorService.findById(doctorId).orElseThrow(() -> new IllegalArgumentException("Unsupported value: " + doctorId));
+    public ResponseEntity<Doctor> getDoctorById(@PathVariable Long doctorId) {
+        return new ResponseEntity<>(doctorService.findById(doctorId).orElseThrow(() -> new IllegalArgumentException("Unsupported value: " + doctorId)), HttpStatus.OK);
     }
 
     @PostMapping()
-    public void addDoctor(@RequestBody Doctor doctor) {
-        Optional<Room> room = roomService.findByNumber(doctor.getRoom().getNumber());
-        Optional<Specialization> specialization = specializationService.findByName(doctor.getSpecialization().getName());
-        room.ifPresent(doctor::setRoom);
-        specialization.ifPresent(doctor::setSpecialization);
-        doctorService.addDoctor(doctor);
+    public ResponseEntity<Doctor> addDoctor(@RequestBody Doctor doctor) {
+//        Optional<Room> room = roomService.findByNumber(doctor.getRoom().getNumber());
+//        Optional<Specialization> specialization = specializationService.findByName(doctor.getSpecialization().getName());
+//        room.ifPresent(doctor::setRoom);
+//        specialization.ifPresent(doctor::setSpecialization);
+//        doctorService.addDoctor(doctor);
+        return new ResponseEntity<>(doctor, HttpStatus.CREATED);
     }
 
     @PutMapping()
-    public void updateDoctor(@RequestBody Doctor doctor) {
+    public ResponseEntity<Doctor> updateDoctor(@RequestBody Doctor doctor) {
         doctorService.updateDoctor(doctor);
+        return new ResponseEntity<>(doctor, HttpStatus.OK);
     }
 
     @DeleteMapping("/{doctorId}")
-    public void removeDoctor(@PathVariable Long doctorId) {
+    public ResponseEntity<Long> removeDoctor(@PathVariable Long doctorId) {
         doctorService.removeDoctor(doctorId);
+        return new ResponseEntity<>(doctorId, HttpStatus.OK);
     }
 }

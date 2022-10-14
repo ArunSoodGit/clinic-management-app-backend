@@ -22,9 +22,8 @@ public class Prescription {
 
     private Date date;
 
-    @OneToOne
-    @JsonIgnore
-    private Reservation reservation;
+    @Column(name = "reservation_id")
+    private Long reservationId;
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(

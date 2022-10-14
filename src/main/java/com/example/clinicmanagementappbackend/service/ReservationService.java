@@ -43,10 +43,10 @@ public class ReservationService {
     }
 
     public List<Reservation> findAllByDoctor(Doctor doctor) {
-        return reservationRepo.findAllByDoctor(doctor);
+        return reservationRepo.findAllByDoctorId(doctor.getId());
     }
     public List<Reservation> findAllByPatient(Patient patient) {
-        return reservationRepo.findAllByPatient(patient);
+        return reservationRepo.findAllByPatientId(patient.getId());
     }
 
 }
